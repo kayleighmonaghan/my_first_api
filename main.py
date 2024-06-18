@@ -14,6 +14,11 @@ def create_item(item: str):
     items.append(item)
     return items
 
+@app.get("/items")
+def list_items(limit: int = 10):
+    # return a list of the items; limited to the input amount or the default
+    return items[0:limit]
+
 @app.get("/items/{item_id}")
 def get_item(item_id: int) -> str:
     # retrieve an item from the list; if it does not exist then raise an error message
